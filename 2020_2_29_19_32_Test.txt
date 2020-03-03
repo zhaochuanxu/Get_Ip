@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
+<title>全球地震历史数据查询 - 92cha.com 就爱查</title>
+<link href="/css/bootstrap.min.css" rel="stylesheet">
+<!--[if lt IE 9]><script src="/js/ie8-responsive-file-warning.js"></script><![endif]-->
+<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!--[if lt IE 9]>
+<script src="/js/html5shiv.js"></script>
+<script src="/js/respond.min.js"></script>
+<![endif]-->
+<script src="/js/jquery.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/js/My97DatePicker/WdatePicker.js"></script>
+
+<style type="text/css">
+	#footer {
+    height: 60px;
+    background-color: #f5f5f5;
+	}
+
+	@media (max-width: 767px) {
+	    #footer {
+	        padding-left: 20px;
+	        padding-right: 20px;
+	    }
+	}
+
+	.footer_p {
+	    margin: 20px 0;
+	    text-align: center;
+	    color: #666666;
+	}
+	th {
+		text-align: center;
+	}
+
+	.divhide {
+	    display: none;
+	}
+
+	label {
+    display: inline-block;
+    max-width: 100%;
+    margin-bottom: 5px;
+    font-weight: 700;
+}
+</style>
+
+</head>
+<body>
+<div class="navbar navbar-inverse navbar-static-top" role="navigation">
+	<div class="container">
+	<div class="navbar-header">
+    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-inverse-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+	<a class="navbar-brand" href="/">灾害风险地图</a>
+  </div>
+  <div style="height: 1px;" class="navbar-collapse navbar-inverse-collapse collapse">
+    <ul class="nav navbar-nav">
+		<li><a href="/shuiqing.php?w=sk">大型水库</a></li>
+		<li><a href="/shuiqing.php?w=hd">大江大河</a></li>
+		<li><a href="/shuiqing.php?w=yl">重点站雨量</a></li>
+		<li><a href="/shuizhi.php">地表水水质</a></li>
+    <li><a href="/jiduantianqi.php">极端天气</a></li>
+    <li class="active"><a href="/dizhen.php">地震</a></li>
+    <li><a href="/kqxsjll.php">辐射监测</a></li>
+    <li><a href="/aqi_forecast.php">AQI预报</a></li>
+    </ul>
+  </div>
+</div>
+</div>
+    <div id="wrap">
+        <div class="container">
+            <center>
+                <h2>全球地震历史数据查询</h2>
+            </center>
+            <div class="row">
+            	<div class="col-md-12 text-center" style="line-height: 50px;">
+            	更新日期：2020-02-29            	</div>
+            	<div class="col-md-12">
+            		<div class="alert alert-dismissable alert-warning">
+			  			<button type="button" class="close" data-dismiss="alert">×</button>
+	            		<p>注意：中国地震局有感地震数据最早支持到2012年，5级以上地震支持到公元1000年，侧重中国境内地震信息，国外震级较小的已经去除。美国地质勘探局（USGS）数据200多万条，最早支持到1900年，USGS侧重美国境内，在美国之外的国家，将只包含震级较大的地震。</p>
+            		</div>
+            	</div>
+            	<form id="form1" method="get">
+            	<div class="col-md-12 form-inline" style="margin-bottom: 8px;">
+	            	<label>数据来源：
+			            <select name="dizhen_ly" class="form-control">
+			                <option value="china" selected>中国地震局</option>
+			                <option value="usa" >美国地质勘探局（USGS）</option>
+			            </select>
+			        </label>
+			        <label>震级：
+			            <select name="dizhen_zjs" class="form-control">
+			            <option value="1" selected>1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option>			            </select> -
+			            <select name="dizhen_zje" class="form-control">
+			            <option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6" selected>6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option>			            </select>
+			        </label>
+			        <label>日期：
+			            <input class="form-control" style="width:100px;" name="dizhen_riqis" type="text" onClick="WdatePicker({dateFmt:'yyyy-MM-dd'})" value=""> - <input class="form-control" style="width:100px;" name="dizhen_riqie" type="text" onClick="WdatePicker({dateFmt:'yyyy-MM-dd'})" value="">
+			        </label>
+			        <label>位置：
+			            <input class="form-control" style="width:100px;" name="ckwz" type="text" value="">
+			        </label>
+			        <input type="button" onClick="$('#form1').submit();" value="查询" class="btn btn-default">
+            	</div>
+            	</form>
+
+                <div class="col-md-12">
+                	<div class="table-responsive">
+                	<table class="table table-striped table-hover">
+						<tr>
+						<th>发震时刻</th>
+						<th>震级(M)</th>						
+						<th>经度(°)</th>
+						<th>纬度(°)</th>
+						<th>深度(千米)</th>
+						<th>参考位置</th>
+						</tr>
+     
+<tr>
+	<td class="text-center">2020-02-29 05:36:25</td>
+	<td class="text-center">4.6</td>		
+	<td class="text-center">81.0700</td>
+	<td class="text-center">41.7900</td>
+	<td class="text-center">19.00</td>
+	<td><a href="/?language=zh-cn&lat=41.7900&lng=81.0700&zoom=10&maptypeid=hybrid" target="_blank">新疆阿克苏地区拜城县</a></td>
+</tr>         		
+     
+<tr>
+	<td class="text-center">2020-02-28 23:05:54</td>
+	<td class="text-center">2.1</td>		
+	<td class="text-center">118.1900</td>
+	<td class="text-center">39.6100</td>
+	<td class="text-center">12.00</td>
+	<td><a href="/?language=zh-cn&lat=39.6100&lng=118.1900&zoom=10&maptypeid=hybrid" target="_blank">河北唐山市路南区</a></td>
+</tr>         		
+     
+<tr>
+	<td class="text-center">2020-02-28 15:41:53</td>
+	<td class="text-center">5.9</td>		
+	<td class="text-center">-173.0600</td>
+	<td class="text-center">-19.2900</td>
+	<td class="text-center">10.00</td>
+	<td><a href="/?language=zh-cn&lat=-19.2900&lng=-173.0600&zoom=10&maptypeid=hybrid" target="_blank">汤加群岛地区</a></td>
+</tr>         		
+     
+<tr>
+	<td class="text-center">2020-02-28 07:56:17</td>
+	<td class="text-center">3.9</td>		
+	<td class="text-center">103.5100</td>
+	<td class="text-center">28.0900</td>
+	<td class="text-center">12.00</td>
+	<td><a href="/?language=zh-cn&lat=28.0900&lng=103.5100&zoom=10&maptypeid=hybrid" target="_blank">云南昭通市永善县</a></td>
+</tr>         		
+     
+<tr>
+	<td class="text-center">2020-02-28 03:13:03</td>
+	<td class="text-center">5.5</td>		
+	<td class="text-center">125.9000</td>
+	<td class="text-center">3.7500</td>
+	<td class="text-center">130.00</td>
+	<td><a href="/?language=zh-cn&lat=3.7500&lng=125.9000&zoom=10&maptypeid=hybrid" target="_blank">印尼塔劳群岛</a></td>
+</tr>         		
+     
+<tr>
+	<td class="text-center">2020-02-27 21:14:05</td>
+	<td class="text-center">3.2</td>		
+	<td class="text-center">95.1300</td>
+	<td class="text-center">31.9300</td>
+	<td class="text-center">10.00</td>
+	<td><a href="/?language=zh-cn&lat=31.9300&lng=95.1300&zoom=10&maptypeid=hybrid" target="_blank">西藏昌都市丁青县</a></td>
+</tr>         		
+     
+<tr>
+	<td class="text-center">2020-02-26 15:33:08</td>
+	<td class="text-center">5.8</td>		
+	<td class="text-center">131.0500</td>
+	<td class="text-center">-7.7000</td>
+	<td class="text-center">40.00</td>
+	<td><a href="/?language=zh-cn&lat=-7.7000&lng=131.0500&zoom=10&maptypeid=hybrid" target="_blank">印尼塔宁巴尔群岛地区</a></td>
+</tr>         		
+     
+<tr>
+	<td class="text-center">2020-02-26 13:34:14</td>
+	<td class="text-center">3.8</td>		
+	<td class="text-center">121.6800</td>
+	<td class="text-center">23.8700</td>
+	<td class="text-center">23.00</td>
+	<td><a href="/?language=zh-cn&lat=23.8700&lng=121.6800&zoom=10&maptypeid=hybrid" target="_blank">台湾花莲县海域</a></td>
+</tr>         		
+     
+<tr>
+	<td class="text-center">2020-02-25 19:14:02</td>
+	<td class="text-center">4.9</td>		
+	<td class="text-center">121.4500</td>
+	<td class="text-center">24.4200</td>
+	<td class="text-center">15.00</td>
+	<td><a href="/?language=zh-cn&lat=24.4200&lng=121.4500&zoom=10&maptypeid=hybrid" target="_blank">台湾宜兰县</a></td>
+</tr>         		
+     
+<tr>
+	<td class="text-center">2020-02-25 18:44:39</td>
+	<td class="text-center">3.1</td>		
+	<td class="text-center">76.9100</td>
+	<td class="text-center">36.5600</td>
+	<td class="text-center">104.00</td>
+	<td><a href="/?language=zh-cn&lat=36.5600&lng=76.9100&zoom=10&maptypeid=hybrid" target="_blank">新疆喀什地区叶城县</a></td>
+</tr>         		
+     
+<tr>
+	<td class="text-center">2020-02-25 16:18:59</td>
+	<td class="text-center">3.2</td>		
+	<td class="text-center">104.5500</td>
+	<td class="text-center">29.5000</td>
+	<td class="text-center">8.00</td>
+	<td><a href="/?language=zh-cn&lat=29.5000&lng=104.5500&zoom=10&maptypeid=hybrid" target="_blank">四川内江市威远县</a></td>
+</tr>         		
+     
+<tr>
+	<td class="text-center">2020-02-24 09:47:02</td>
+	<td class="text-center">3.4</td>		
+	<td class="text-center">77.4900</td>
+	<td class="text-center">39.9100</td>
+	<td class="text-center">10.00</td>
+	<td><a href="/?language=zh-cn&lat=39.9100&lng=77.4900&zoom=10&maptypeid=hybrid" target="_blank">新疆克孜勒苏州阿图什市</a></td>
+</tr>         		
+     
+<tr>
+	<td class="text-center">2020-02-24 00:00:34</td>
+	<td class="text-center">5.9</td>		
+	<td class="text-center">44.4200</td>
+	<td class="text-center">38.4600</td>
+	<td class="text-center">20.00</td>
+	<td><a href="/?language=zh-cn&lat=38.4600&lng=44.4200&zoom=10&maptypeid=hybrid" target="_blank">伊朗西北部</a></td>
+</tr>         		
+     
+<tr>
+	<td class="text-center">2020-02-23 13:53:03</td>
+	<td class="text-center">5.6</td>		
+	<td class="text-center">44.4800</td>
+	<td class="text-center">38.4600</td>
+	<td class="text-center">30.00</td>
+	<td><a href="/?language=zh-cn&lat=38.4600&lng=44.4800&zoom=10&maptypeid=hybrid" target="_blank">伊朗西北部</a></td>
+</tr>         		
+     
+<tr>
+	<td class="text-center">2020-02-23 10:08:08</td>
+	<td class="text-center">5.2</td>		
+	<td class="text-center">125.2500</td>
+	<td class="text-center">-0.2000</td>
+	<td class="text-center">50.00</td>
+	<td><a href="/?language=zh-cn&lat=-0.2000&lng=125.2500&zoom=10&maptypeid=hybrid" target="_blank">印尼马鲁古海南部</a></td>
+</tr>         		
+     
+<tr>
+	<td class="text-center">2020-02-23 07:12:38</td>
+	<td class="text-center">5.4</td>		
+	<td class="text-center">-93.7400</td>
+	<td class="text-center">-38.0300</td>
+	<td class="text-center">10.00</td>
+	<td><a href="/?language=zh-cn&lat=-38.0300&lng=-93.7400&zoom=10&maptypeid=hybrid" target="_blank">西智利海岭</a></td>
+</tr>         		
+     
+<tr>
+	<td class="text-center">2020-02-23 03:38:01</td>
+	<td class="text-center">3.0</td>		
+	<td class="text-center">113.9800</td>
+	<td class="text-center">38.2500</td>
+	<td class="text-center">18.00</td>
+	<td><a href="/?language=zh-cn&lat=38.2500&lng=113.9800&zoom=10&maptypeid=hybrid" target="_blank">河北石家庄市平山县</a></td>
+</tr>         		
+     
+<tr>
+	<td class="text-center">2020-02-21 23:39:14</td>
+	<td class="text-center">5.1</td>		
+	<td class="text-center">77.4700</td>
+	<td class="text-center">39.8700</td>
+	<td class="text-center">10.00</td>
+	<td><a href="/?language=zh-cn&lat=39.8700&lng=77.4700&zoom=10&maptypeid=hybrid" target="_blank">新疆喀什地区伽师县</a></td>
+</tr>         		
+     
+<tr>
+	<td class="text-center">2020-02-21 18:20:21</td>
+	<td class="text-center">5.1</td>		
+	<td class="text-center">-179.3400</td>
+	<td class="text-center">51.0500</td>
+	<td class="text-center">10.00</td>
+	<td><a href="/?language=zh-cn&lat=51.0500&lng=-179.3400&zoom=10&maptypeid=hybrid" target="_blank">安德烈亚诺夫群岛海域</a></td>
+</tr>         		
+     
+<tr>
+	<td class="text-center">2020-02-21 04:24:28</td>
+	<td class="text-center">5.3</td>		
+	<td class="text-center">129.6500</td>
+	<td class="text-center">-6.8000</td>
+	<td class="text-center">160.00</td>
+	<td><a href="/?language=zh-cn&lat=-6.8000&lng=129.6500&zoom=10&maptypeid=hybrid" target="_blank">班达海</a></td>
+</tr>         		
+     
+<tr>
+	<td class="text-center">2020-02-21 02:57:37</td>
+	<td class="text-center">5.8</td>		
+	<td class="text-center">160.5500</td>
+	<td class="text-center">53.6200</td>
+	<td class="text-center">30.00</td>
+	<td><a href="/?language=zh-cn&lat=53.6200&lng=160.5500&zoom=10&maptypeid=hybrid" target="_blank">堪察加东海岸附近海域</a></td>
+</tr>         		
+     
+<tr>
+	<td class="text-center">2020-02-21 02:11:05</td>
+	<td class="text-center">4.0</td>		
+	<td class="text-center">85.8800</td>
+	<td class="text-center">34.5400</td>
+	<td class="text-center">10.00</td>
+	<td><a href="/?language=zh-cn&lat=34.5400&lng=85.8800&zoom=10&maptypeid=hybrid" target="_blank">西藏阿里地区改则县</a></td>
+</tr>         		
+     
+<tr>
+	<td class="text-center">2020-02-21 02:01:40</td>
+	<td class="text-center">5.0</td>		
+	<td class="text-center">85.6800</td>
+	<td class="text-center">34.5600</td>
+	<td class="text-center">9.00</td>
+	<td><a href="/?language=zh-cn&lat=34.5600&lng=85.6800&zoom=10&maptypeid=hybrid" target="_blank">西藏阿里地区改则县</a></td>
+</tr>         		
+     
+<tr>
+	<td class="text-center">2020-02-20 17:54:07</td>
+	<td class="text-center">5.3</td>		
+	<td class="text-center">125.7000</td>
+	<td class="text-center">5.7000</td>
+	<td class="text-center">200.00</td>
+	<td><a href="/?language=zh-cn&lat=5.7000&lng=125.7000&zoom=10&maptypeid=hybrid" target="_blank">棉兰老岛附近海域</a></td>
+</tr>         		
+     
+<tr>
+	<td class="text-center">2020-02-20 04:44:34</td>
+	<td class="text-center">3.1</td>		
+	<td class="text-center">116.6300</td>
+	<td class="text-center">36.4600</td>
+	<td class="text-center">8.00</td>
+	<td><a href="/?language=zh-cn&lat=36.4600&lng=116.6300&zoom=10&maptypeid=hybrid" target="_blank">山东济南市长清区</a></td>
+</tr>         		
+     
+<tr>
+	<td class="text-center">2020-02-19 18:37:25</td>
+	<td class="text-center">3.3</td>		
+	<td class="text-center">88.1400</td>
+	<td class="text-center">32.5100</td>
+	<td class="text-center">6.00</td>
+	<td><a href="/?language=zh-cn&lat=32.5100&lng=88.1400&zoom=10&maptypeid=hybrid" target="_blank">西藏那曲市双湖县</a></td>
+</tr>         		
+     
+<tr>
+	<td class="text-center">2020-02-19 13:27:45</td>
+	<td class="text-center">4.3</td>		
+	<td class="text-center">121.5900</td>
+	<td class="text-center">23.8700</td>
+	<td class="text-center">9.00</td>
+	<td><a href="/?language=zh-cn&lat=23.8700&lng=121.5900&zoom=10&maptypeid=hybrid" target="_blank">台湾花莲县</a></td>
+</tr>         		
+     
+<tr>
+	<td class="text-center">2020-02-19 03:49:50</td>
+	<td class="text-center">3.6</td>		
+	<td class="text-center">85.6000</td>
+	<td class="text-center">30.0400</td>
+	<td class="text-center">6.00</td>
+	<td><a href="/?language=zh-cn&lat=30.0400&lng=85.6000&zoom=10&maptypeid=hybrid" target="_blank">西藏阿里地区措勤县</a></td>
+</tr>         		
+     
+<tr>
+	<td class="text-center">2020-02-19 01:01:59</td>
+	<td class="text-center">2.8</td>		
+	<td class="text-center">104.3100</td>
+	<td class="text-center">25.8700</td>
+	<td class="text-center">8.00</td>
+	<td><a href="/?language=zh-cn&lat=25.8700&lng=104.3100&zoom=10&maptypeid=hybrid" target="_blank">云南曲靖市富源县</a></td>
+</tr>         		
+     
+<tr>
+	<td class="text-center">2020-02-18 17:07:16</td>
+	<td class="text-center">4.1</td>		
+	<td class="text-center">116.6400</td>
+	<td class="text-center">36.4700</td>
+	<td class="text-center">10.00</td>
+	<td><a href="/?language=zh-cn&lat=36.4700&lng=116.6400&zoom=10&maptypeid=hybrid" target="_blank">山东济南市长清区</a></td>
+</tr>         		
+     
+<tr>
+	<td class="text-center">2020-02-18 16:26:00</td>
+	<td class="text-center">3.1</td>		
+	<td class="text-center">97.7700</td>
+	<td class="text-center">25.0000</td>
+	<td class="text-center">8.00</td>
+	<td><a href="/?language=zh-cn&lat=25.0000&lng=97.7700&zoom=10&maptypeid=hybrid" target="_blank">云南德宏州盈江县</a></td>
+</tr>         		
+     
+<tr>
+	<td class="text-center">2020-02-17 20:54:53</td>
+	<td class="text-center">5.3</td>		
+	<td class="text-center">142.7000</td>
+	<td class="text-center">28.5500</td>
+	<td class="text-center">10.00</td>
+	<td><a href="/?language=zh-cn&lat=28.5500&lng=142.7000&zoom=10&maptypeid=hybrid" target="_blank">日本小笠原群岛地区</a></td>
+</tr>         		
+     
+<tr>
+	<td class="text-center">2020-02-16 20:30:50</td>
+	<td class="text-center">5.5</td>		
+	<td class="text-center">55.7400</td>
+	<td class="text-center">27.1800</td>
+	<td class="text-center">30.00</td>
+	<td><a href="/?language=zh-cn&lat=27.1800&lng=55.7400&zoom=10&maptypeid=hybrid" target="_blank">伊朗南部</a></td>
+</tr>         		
+     
+<tr>
+	<td class="text-center">2020-02-16 07:00:27</td>
+	<td class="text-center">5.4</td>		
+	<td class="text-center">131.5500</td>
+	<td class="text-center">-3.4500</td>
+	<td class="text-center">10.00</td>
+	<td><a href="/?language=zh-cn&lat=-3.4500&lng=131.5500&zoom=10&maptypeid=hybrid" target="_blank">印尼塞兰岛附近海域</a></td>
+</tr>         		
+     
+<tr>
+	<td class="text-center">2020-02-16 04:28:19</td>
+	<td class="text-center">4.4</td>		
+	<td class="text-center">104.5000</td>
+	<td class="text-center">29.4800</td>
+	<td class="text-center">10.00</td>
+	<td><a href="/?language=zh-cn&lat=29.4800&lng=104.5000&zoom=10&maptypeid=hybrid" target="_blank">四川自贡市荣县</a></td>
+</tr>         		
+     
+<tr>
+	<td class="text-center">2020-02-16 03:20:13</td>
+	<td class="text-center">4.5</td>		
+	<td class="text-center">121.6300</td>
+	<td class="text-center">23.8200</td>
+	<td class="text-center">11.00</td>
+	<td><a href="/?language=zh-cn&lat=23.8200&lng=121.6300&zoom=10&maptypeid=hybrid" target="_blank">台湾花莲县海域</a></td>
+</tr>         		
+     
+<tr>
+	<td class="text-center">2020-02-15 19:05:01</td>
+	<td class="text-center">4.7</td>		
+	<td class="text-center">121.5300</td>
+	<td class="text-center">23.8600</td>
+	<td class="text-center">10.00</td>
+	<td><a href="/?language=zh-cn&lat=23.8600&lng=121.5300&zoom=10&maptypeid=hybrid" target="_blank">台湾花莲县</a></td>
+</tr>         		
+     
+<tr>
+	<td class="text-center">2020-02-15 19:00:07</td>
+	<td class="text-center">5.4</td>		
+	<td class="text-center">121.4900</td>
+	<td class="text-center">23.9500</td>
+	<td class="text-center">10.00</td>
+	<td><a href="/?language=zh-cn&lat=23.9500&lng=121.4900&zoom=10&maptypeid=hybrid" target="_blank">台湾花莲县</a></td>
+</tr>         		
+     
+<tr>
+	<td class="text-center">2020-02-15 11:31:56</td>
+	<td class="text-center">5.0</td>		
+	<td class="text-center">79.3200</td>
+	<td class="text-center">41.8500</td>
+	<td class="text-center">15.00</td>
+	<td><a href="/?language=zh-cn&lat=41.8500&lng=79.3200&zoom=10&maptypeid=hybrid" target="_blank">吉尔吉斯斯坦</a></td>
+</tr>         		
+     
+<tr>
+	<td class="text-center">2020-02-14 16:02:36</td>
+	<td class="text-center">3.1</td>		
+	<td class="text-center">86.3300</td>
+	<td class="text-center">43.7900</td>
+	<td class="text-center">15.00</td>
+	<td><a href="/?language=zh-cn&lat=43.7900&lng=86.3300&zoom=10&maptypeid=hybrid" target="_blank">新疆昌吉州呼图壁县</a></td>
+</tr>         		
+     
+<tr>
+	<td class="text-center">2020-02-14 05:38:41</td>
+	<td class="text-center">4.2</td>		
+	<td class="text-center">121.3200</td>
+	<td class="text-center">22.3600</td>
+	<td class="text-center">20.00</td>
+	<td><a href="/?language=zh-cn&lat=22.3600&lng=121.3200&zoom=10&maptypeid=hybrid" target="_blank">台湾台东县海域</a></td>
+</tr>         		
+     
+<tr>
+	<td class="text-center">2020-02-14 01:49:19</td>
+	<td class="text-center">4.5</td>		
+	<td class="text-center">122.1400</td>
+	<td class="text-center">24.2200</td>
+	<td class="text-center">29.00</td>
+	<td><a href="/?language=zh-cn&lat=24.2200&lng=122.1400&zoom=10&maptypeid=hybrid" target="_blank">台湾花莲县海域</a></td>
+</tr>         		
+     
+<tr>
+	<td class="text-center">2020-02-13 18:07:29</td>
+	<td class="text-center">3.4</td>		
+	<td class="text-center">87.6800</td>
+	<td class="text-center">33.3300</td>
+	<td class="text-center">10.00</td>
+	<td><a href="/?language=zh-cn&lat=33.3300&lng=87.6800&zoom=10&maptypeid=hybrid" target="_blank">西藏那曲市双湖县</a></td>
+</tr>         		
+     
+<tr>
+	<td class="text-center">2020-02-12 18:37:17</td>
+	<td class="text-center">5.2</td>		
+	<td class="text-center">141.3700</td>
+	<td class="text-center">37.3300</td>
+	<td class="text-center">80.00</td>
+	<td><a href="/?language=zh-cn&lat=37.3300&lng=141.3700&zoom=10&maptypeid=hybrid" target="_blank">日本本州东岸近海</a></td>
+</tr>         		
+     
+<tr>
+	<td class="text-center">2020-02-10 18:12:35</td>
+	<td class="text-center">3.8</td>		
+	<td class="text-center">89.3400</td>
+	<td class="text-center">41.7100</td>
+	<td class="text-center">15.00</td>
+	<td><a href="/?language=zh-cn&lat=41.7100&lng=89.3400&zoom=10&maptypeid=hybrid" target="_blank">新疆吐鲁番市高昌区</a></td>
+</tr>         		
+     
+<tr>
+	<td class="text-center">2020-02-09 17:42:25</td>
+	<td class="text-center">5.4</td>		
+	<td class="text-center">149.5700</td>
+	<td class="text-center">-4.6100</td>
+	<td class="text-center">570.00</td>
+	<td><a href="/?language=zh-cn&lat=-4.6100&lng=149.5700&zoom=10&maptypeid=hybrid" target="_blank">俾斯麦海</a></td>
+</tr>         		
+     
+<tr>
+	<td class="text-center">2020-02-09 02:16:08</td>
+	<td class="text-center">3.4</td>		
+	<td class="text-center">77.6000</td>
+	<td class="text-center">40.4800</td>
+	<td class="text-center">22.00</td>
+	<td><a href="/?language=zh-cn&lat=40.4800&lng=77.6000&zoom=10&maptypeid=hybrid" target="_blank">新疆克孜勒苏州阿图什市</a></td>
+</tr>         		
+     
+<tr>
+	<td class="text-center">2020-02-08 22:33:00</td>
+	<td class="text-center">5.8</td>		
+	<td class="text-center">-25.5200</td>
+	<td class="text-center">-59.7900</td>
+	<td class="text-center">20.00</td>
+	<td><a href="/?language=zh-cn&lat=-59.7900&lng=-25.5200&zoom=10&maptypeid=hybrid" target="_blank">南桑威奇群岛地区</a></td>
+</tr>         		
+     
+<tr>
+	<td class="text-center">2020-02-08 02:52:57</td>
+	<td class="text-center">5.5</td>		
+	<td class="text-center">-60.1500</td>
+	<td class="text-center">-59.4300</td>
+	<td class="text-center">10.00</td>
+	<td><a href="/?language=zh-cn&lat=-59.4300&lng=-60.1500&zoom=10&maptypeid=hybrid" target="_blank">德雷克海峡</a></td>
+</tr>         		
+     
+<tr>
+	<td class="text-center">2020-02-07 08:12:39</td>
+	<td class="text-center">3.8</td>		
+	<td class="text-center">125.2500</td>
+	<td class="text-center">48.7400</td>
+	<td class="text-center">14.00</td>
+	<td><a href="/?language=zh-cn&lat=48.7400&lng=125.2500&zoom=10&maptypeid=hybrid" target="_blank">黑龙江黑河市嫩江县</a></td>
+</tr>         		
+</table>
+                	</div>
+                </div>
+                <div class="col-md-12 text-center">
+                	查询到 12245 条记录，分 245 页显示。                </div>
+                <div class="col-md-12">
+                	   <ul class="pager">
+<li class="disabled" href="#"><a>首页</a></li> <li class="disabled" href="#"><a>上页</a></li> <li><a href="?page=2&dizhen_ly=china&dizhen_zjs=1&dizhen_zje=6">下页</a></li> <li><a href="?page=245&dizhen_ly=china&dizhen_zjs=1&dizhen_zje=6">尾页</a></li>   </ul>                </div>
+            	<div class="col-md-12 text-center" style="line-height: 50px;">
+            	数据来源：中国地震局、美国地质勘探局（USGS）
+            	</div>
+            </div>
+        </div>
+    </div>
+    <div id="footer">
+        <div class="container">
+            <p class="footer_p">&copy; 2008-2020 <a href="http://ditu.92cha.com">ditu.92cha.com</a> 灾害风险预警地图</p>
+        </div>
+    </div>
+    <div class="divhide"><script src="https://s96.cnzz.com/z_stat.php?id=1024321&web_id=1024321" language="JavaScript"></script></div>
+<script src="http://www.ruijieyun.com/js/adcloud/index.js?tenantName="></script>
+</body>
+</html>

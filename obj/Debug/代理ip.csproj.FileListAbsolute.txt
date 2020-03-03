@@ -1,0 +1,5 @@
+E:\寒假\实时数据系统\MvcApplication1\代理ip\bin\Debug\代理ip.exe.config
+E:\寒假\实时数据系统\MvcApplication1\代理ip\bin\Debug\代理ip.exe
+E:\寒假\实时数据系统\MvcApplication1\代理ip\bin\Debug\代理ip.pdb
+E:\寒假\实时数据系统\MvcApplication1\代理ip\obj\Debug\代理ip.exe
+E:\寒假\实时数据系统\MvcApplication1\代理ip\obj\Debug\代理ip.pdb

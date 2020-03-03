@@ -1,0 +1,405 @@
+<!doctype html>
+<html>
+<head>
+
+    <link href="/Content/18830/css/children.css" rel="stylesheet"/>
+<link href="/Content/18830/css/index.css" rel="stylesheet"/>
+
+    <link href="/Content/Bootstarp/css/bootstrap.min.css" rel="stylesheet"/>
+<link href="/Content/Bootstarp/css/bootstrap-theme.css" rel="stylesheet"/>
+<link href="/Content/Bootstarp/css/bootstrap.css" rel="stylesheet"/>
+
+    <meta charset="utf-8">
+    <meta content="广西地质灾害数据库" http-equiv="keywords">
+    <meta name="description" content="广西地质灾害数据库">
+    <meta name="applicable-device" content="pc,mobile">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+    <title>广西地质灾害数据库</title>
+
+    <link rel="stylesheet" href="css/index.css" type="text/css">
+
+    <script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="js/jquery.SuperSlide.2.1.1.js"></script>
+    <script type="text/javascript" src="js/public.js"></script><!-- 菜单js等-->
+    <!-- 时间选择js -->
+    <script src="/Content/18830/JS/jquery-1.11.0.min.js"></script>
+<script src="/Content/18830/JS/jquery.SuperSlide.2.1.1.js"></script>
+<script src="/Content/18830/JS/laydate.js"></script>
+<script src="/Content/18830/JS/public.js"></script>
+
+    <script type="text/javascript" src="js/laydate.js"></script>
+
+</head>
+
+
+
+<body>
+
+    <!--头部-->
+    <div class="topbox bg">
+        <div class="wid_main fix">
+            <div class="logo l"><img src="/images/logo.png" alt="logo" /></div>
+            <!-- 搜索 -->
+            <div class="search_box r bora_5">
+                <form>
+                    <div>
+                        <input type="text" name="" placeholder="请输入关键词检索">
+                        <button type="submit"><img src="/images/18830/search.png"></button>
+                    </div>
+
+
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- top end -->
+
+
+
+    <!-- 主体内容框 -->
+    <div class="contentbox wid_main bora_5">
+        <div class="content">
+
+            <!-- 导航栏部分 -->
+            <div class="top_nav bg bora_5 ovh">
+                <ul class="fix">
+                    <li class="cur">
+                        <a href="/Index/Main">首 页</a>
+                    </li>
+
+                    <li>
+                        <a href="/News/Index">新闻资讯</a>
+                    </li>
+                    <li>
+                        <a href="">数据查看</a>
+                    </li>
+                    <li>
+                        <a href="newslist.html">抗震防灾知识</a>
+                    </li>
+                    <li>
+                        <a href="newslist.html">数据下载</a>
+                    </li>
+ 
+
+                </ul>
+            </div>
+            <!-- 导航end -->
+
+
+
+            <!-- 需要添加的最新通知或公告滚动部分 -->
+            <div class="gonggao bdb_d fix">
+                <div class="txtScroll-top l fix">
+                    <div class="l tit"><img src="/images/18830/icon_notice.png"><b class="dib vm">信息公告：</b></div>
+                    <div class="bd l">
+                        <ul class="infoList">
+                            <li><a href="news_xq.html">出门记得戴口罩，注意防范</a><span class="date">2020-01-21</span></li>
+                            <li><a href="news_xq.html">新疆叶城县发生3.1级地震</a><span class="date">2020-02-25 </span></li>
+                            <li><a href="news_xq.html">云南昭通市永善县发生3.9级地震</a><span class="date">2020-02-28</span></li>
+                            <li><a href="news_xq.html">台湾花莲县发生4.9级地震</a><span class="date">2020-02-26 </span></li>
+                        </ul>
+
+                    </div>
+                </div>
+                <script type="text/javascript">
+                    jQuery(".txtScroll-top").slide({ titCell: ".hd ul", mainCell: ".bd ul", effect: "topLoop", autoPlay: true, vis: 1, interTime: 4000, });
+                </script>
+
+                <!-- 时间 -->
+                <div class="timebox fc r">
+                    <script type="text/javascript" src="/Content/18830/JS/show_date.js"></script>
+                </div>
+            </div>
+
+
+
+
+            <!--登录注册按钮-->
+            <div class="id">
+                <div>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="/Index/Login">注册</a></li>
+
+                        <li><a href="/Index/Register">登录</a></li>
+
+                    </ul>
+                </div>
+            </div>
+
+
+
+
+            <!--主体-->
+            <div id="body">
+                <br />
+                <br />
+                
+       
+
+<!-- 重要新闻展示不滚动 -->
+<div class="gonggao important_news">
+    <div class="tit dib vm"><img src="/Images/18830/icon_hot.png"><b class="dib vm">要闻动态</b></div>
+    <h1><a href="news_xq.html">2020-02-19 广西崇左市大新县 发生地震地震级别：2.6级，震源深度：6公里</a></h1>
+</div>
+ 
+
+
+
+<!-- 双公示 -->
+<div class="conbox">
+    <div class="public_list">
+        <div class="hd sy_title fix">
+            <h2 class="l"><img src="Images/18830/icon_gongshi.png"><b class="fc">最近地震灾害</b></h2>
+            <ul class="l">
+                <li><a href="info_public.html">国内灾害</a></li>
+                <li><a href="info_public_cf.html">国外灾害</a></li>
+            </ul>
+            <span class="r more more01">
+                <a href="info_public.html">查看更多></a>
+                <a href="info_public_cf.html">查看更多></a>
+            </span>
+        </div>
+        <div class="bd">
+            <!-- 行政许可公示 -->
+            <div>
+                <form class="search_list">
+                    <div class="box dib vm"><span>发生地 ：</span><input type="text" name=""></div>
+                    <div class="box dib vm"><span>灾害名称：</span><input type="text" name=""></div>
+                    <div class="box dib vm">
+                        <span>发生灾害时间：</span>
+                        <div class="dib vm laydate-icon" id="startTime01"></div>
+
+                        <div class="dib vm laydate-icon" id="endTime01"></div>
+                    </div>
+                    <button type="submit">查 询</button>
+                </form>
+
+                <!-- 行政许可列表 -->
+                <table class="table_list">
+                    <thead>
+                        <!--表头-->
+                        <tr>
+                            <td width="60">序号</td>
+                            <td>灾害名称</td>
+                            <td class="item">发生经纬度</td>
+                            <td>灾害级别</td>
+                            <td class="item01">发生地点</td>
+                            <td>发生时刻(UTC+8)</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td width="60">1</td>
+                            <td>地震</td>
+                            <td class="item"><a>28.09纬度(°)   103.51经度(°)</a></td>
+                            <td>普通</td>
+                            <td class="item01">	云南昭通市永善县</td>
+                            <td>2020-02-28 07:56:17	</td>
+                        </tr>
+                        <tr>
+                            <td width="60">2</td>
+                            <td>地震</td>
+                            <td class="item"><a>31.93纬度(°)   95.13经度(°)</a></td>
+                            <td>普通</td>
+                            <td class="item01">	西藏昌都市丁青县</td>
+                            <td>2020-02-27 21:14:05</td>
+                        </tr>
+                        <tr>
+                            <td width="60">3</td>
+                            <td>地震</td>
+                            <td class="item"><a>23.87纬度(°)   121.68经度(°)</td>
+                            <td>普通</td>
+                            <td class="item01">	台湾花莲县海域</td>
+                            <td>2020-02-26 13:34:14</td>
+                        </tr>
+                        <tr>
+                            <td width="60">4</td>
+                            <td>地震</td>
+                            <td class="item"><a>24.42纬度(°)   121.45经度(°)</a></td>
+                            <td>普通</td>
+                            <td class="item01">福泉市综合行政执法局</td>
+                            <td>2020-02-25 19:14:02</td>
+                        </tr>
+                        <tr>
+                            <td width="60">5</td>
+                            <td>地震</td>
+                            <td class="item"><a>36.56纬度(°)   76.91经度(°)</a></td>
+                            <td>普通</td>
+                            <td class="item01">新疆喀什地区叶城县</td>
+                            <td>2020-02-25 18:44:39</td>
+                        </tr>
+                        <tr>
+                            <td width="60">6</td>
+                            <td>地震</td>
+                            <td class="item"><a>29.50纬度(°)    104.55经度(°)</a></td>
+                            <td>普通</td>
+                            <td class="item01">	四川内江市威远县</td>
+                            <td>2020-02-25 16:18:59</td>
+                        </tr>
+                        <tr>
+                            <td width="60">7</td>
+                            <td>地震</td>
+                            <td class="item"><a>39.91纬度(°)   77.49经度(°)</a></td>
+                            <td>普通</td>
+                            <td class="item01">	新疆克孜勒苏州阿图什市</td>
+                            <td>2020-02-24 09:47:02</td>
+                        </tr>
+                        <tr>
+                            <td width="60">8</td>
+                            <td>地震</td>
+                            <td class="item"><a>38.25纬度(°)   113.98经度(°)</a></td>
+                            <td>普通</td>
+                            <td class="item01">	河北石家庄市平山县</td>
+                            <td>2020-02-23 03:38:01</td>
+                        </tr>
+                        <tr>
+                            <td width="60">9</td>
+                            <td>地震</td>
+                            <td class="item"><a>39.87纬度(°)    77.47经度(°)</a></td>
+                            <td>普通</td>
+                            <td class="item01">	新疆喀什地区伽师县</td>
+                            <td>2020-02-21 23:39:14</td>
+                        </tr>
+                        <tr>
+                            <td width="60">10</td>
+                            <td>地震</td>
+                            <td class="item"><a>34.54纬度(°) 	85.88经度(°)</a></td>
+                            <td>普通</td>
+                            <td class="item01">	西藏阿里地区改则县</td>
+                            <td>2020-02-21 02:11:05</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- 国外公示 -->
+            <div>
+                <form class="search_list">
+                    <div class="box dib vm"><span>发生地 ：</span><input type="text" name=""></div>
+                    <div class="box dib vm"><span>灾害名称：</span><input type="text" name=""></div>
+                    <div class="box dib vm">
+                        <span>发生灾害时间：</span>
+                        <div class="dib vm laydate-icon" id="startTime01"></div>
+
+                        <div class="dib vm laydate-icon" id="endTime01"></div>
+                    </div>
+                    <button type="submit">查 询</button>
+                </form>
+
+                <!-- 行政许可列表 -->
+                <table class="table_list">
+                    <thead>
+                        <!--表头-->
+                        <tr>
+                            <td width="60">序号</td>
+                            <td>灾害名称</td>
+                            <td class="item">发生经纬度</td>
+                            <td>灾害级别</td>
+                            <td class="item01">发生地点</td>
+                            <td>发生时刻(UTC+8)</td>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            <td width="60">1</td>
+                            <td>地震</td>
+                            <td class="item"><a>-19.29纬度(°)   -173.06经度(°)</a></td>
+                            <td>普通</td>
+                            <td class="item01">		汤加群岛地区</td>
+                            <td>2020-02-28 15:41:53</td>
+                        </tr>
+                        <tr>
+                            <td width="60">2</td>
+                            <td>地震</td>
+                            <td class="item"><a> 3.75纬度(°)	125.90经度(°)</a></td>
+                            <td>普通</td>
+                            <td class="item01">		印尼塔劳群岛</td>
+                            <td>2020-02-28 03:13:03	</td>
+                        </tr>
+                        <tr>
+                            <td width="60">3</td>
+                            <td>地震</td>
+                            <td class="item"><a>-7.70纬度(°)	131.05精度(°)	</td>
+                            <td>普通</td>
+                            <td class="item01">	印尼塔宁巴尔群岛地区</td>
+                            <td>2020-02-26 15:33:08</td>
+                        </tr>
+                        <tr>
+                            <td width="60">4</td>
+                            <td>地震</td>
+                            <td class="item"><a>38.46纬度(°)  	44.42	经度(°)</a></td>
+                            <td>普通</td>
+                            <td class="item01">	伊朗西北部 </td>
+                            <td>2020-02-24 00:00:34</td>
+                        </tr>
+                        <tr>
+                            <td width="60">1</td>
+                            <td>地震</td>
+                            <td class="item"><a>	38.46纬度(°)  	44.48经度(°)</a></td>
+                            <td>普通</td>
+                            <td class="item01">	伊朗西北部</td>
+                            <td>2020-02-23 13:53:03</td>
+                        </tr>
+                        <tr>
+                            <td width="60">2</td>
+                            <td>地震</td>
+                            <td class="item"><a>--0.20纬度(°)  	125.25   经度(°)</a></td>
+                            <td>普通</td>
+                            <td class="item01">	印尼马鲁古海南部</td>
+                            <td>2020-02-26 15:33:08	</td>
+                        </tr>
+                   </table>
+
+               
+            </div>
+        </div>
+    <script type="text/javascript">jQuery(".public_list").slide();</script>
+</div>
+</div>
+
+            </div>
+
+
+
+        </div>
+
+    </div>
+    <!-- top end -->
+
+    <script src="/bundles/jquery"></script>
+
+    
+
+
+
+
+
+
+    <!-- 主尾-->
+    <div class="footerbox bg">
+        <div class="wid_main fix">
+            <div class="l">
+                <a href="http://121.43.68.40/exposure/jiucuo.html?site_code=5200000083&url=www.guizhou.gov.cn" target="blank" class="dib vm"><img src="/images/10830/cuo.png" /></a>
+                <a href="http://www.51qianduan.com//sitename?method=show&id=09D70ADDD9E64427E053022819AC3042" target="blank" class="dib vm"><img src="/images/130/dangzheng.png"></a>
+            </div>
+            <div class="l txt">
+                <p>版权所有：赵传旭&nbsp;&nbsp;&nbsp;地址：广西壮族自治区桂林市雁山区雁中路一号</p>
+                <p><img src="/images/18830/beian.png">桂ICP备19011968号&nbsp;&nbsp;&nbsp;桂ICP备19011968号-1&nbsp;&nbsp;&nbsp;</p>
+                <p>赵传旭建设和维护</p>
+            </div>
+            <ul class="r other fix">
+                <li><a href="contact.html">联系我们</a></li>
+                <li><a href="about.html">机构概况</a></li>
+                <li><a href="info_public.html">信息公开</a></li>
+                <li><a href="newslist.html">办事指南</a></li>
+            </ul>
+
+        </div>
+    </div>
+
+</body>
+</html>
